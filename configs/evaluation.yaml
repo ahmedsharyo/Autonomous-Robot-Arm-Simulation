@@ -1,0 +1,7 @@
+seed: 17
+trials: 40
+reachable_config_range:
+  low: [-0.8, -0.8, -1.0, -0.8, -0.8, -1.0]
+  high: [0.8, 0.8, 1.0, 0.8, 0.8, 1.0]
+initial_joint_noise_std_rad: 0.2
+success_position_error_m: 0.0001

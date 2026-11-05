@@ -1,0 +1,15 @@
+simulation:
+  timestep: 0.002
+  controller_hz: 100
+  seed: 17
+control:
+  kp: 80.0
+  kd: 16.0
+  max_joint_speed: 1.2
+ik:
+  damping: 0.04
+  tolerance_m: 0.0001
+  max_iterations: 250
+task:
+  waypoint_duration_s: 1.4
+  success_position_error_m: 0.025

@@ -1,0 +1,47 @@
+<mujoco model="six_dof_tabletop_arm">
+  <compiler angle="radian" autolimits="true" inertiafromgeom="true"/>
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast"/>
+  <default>
+    <joint type="hinge" axis="0 0 1" damping="1.5" armature="0.02" limited="true" range="-2.8 2.8"/>
+    <geom friction="1.2 0.02 0.002" condim="4" density="650"/>
+    <motor ctrllimited="true" ctrlrange="-35 35"/>
+  </default>
+  <worldbody>
+    <light name="key" pos="-1 -1 2.5" dir="1 1 -2" diffuse="0.8 0.8 0.8"/>
+    <geom name="floor" type="plane" size="2 2 0.1" rgba="0.18 0.2 0.23 1"/>
+    <body name="table" pos="0.45 0 0.35"><geom name="tabletop" type="box" size="0.48 0.55 0.025" rgba="0.45 0.31 0.19 1"/></body>
+    <body name="base" pos="0 0 0.39">
+      <geom name="base_geom" type="cylinder" size="0.09 0.07" rgba="0.2 0.25 0.32 1"/>
+      <body name="link1" pos="0 0 0.07">
+        <joint name="joint1" range="-3.14 3.14"/><geom name="shoulder" type="capsule" fromto="0 0 0 0 0 0.12" size="0.055" rgba="0.2 0.45 0.72 1"/>
+        <body name="link2" pos="0 0 0.12">
+          <joint name="joint2" axis="0 1 0" range="-2.4 2.4"/><geom name="upper_arm" type="capsule" fromto="0 0 0 0.25 0 0" size="0.045" rgba="0.2 0.55 0.82 1"/>
+          <body name="link3" pos="0.25 0 0">
+            <joint name="joint3" axis="0 1 0" range="-2.6 2.6"/><geom name="forearm" type="capsule" fromto="0 0 0 0.23 0 0" size="0.04" rgba="0.2 0.45 0.72 1"/>
+            <body name="link4" pos="0.23 0 0">
+              <joint name="joint4" axis="1 0 0" range="-3.14 3.14"/><geom name="wrist1" type="capsule" fromto="0 0 0 0.09 0 0" size="0.032" rgba="0.3 0.65 0.85 1"/>
+              <body name="link5" pos="0.09 0 0">
+                <joint name="joint5" axis="0 1 0" range="-2.4 2.4"/><geom name="wrist2" type="capsule" fromto="0 0 0 0.07 0 0" size="0.029" rgba="0.3 0.65 0.85 1"/>
+                <body name="link6" pos="0.07 0 0">
+                  <joint name="joint6" axis="1 0 0" range="-3.14 3.14"/><geom name="wrist3" type="capsule" fromto="0 0 0 0.065 0 0" size="0.026" rgba="0.3 0.65 0.85 1"/>
+                  <body name="tool" pos="0.065 0 0">
+                    <site name="ee" pos="0.025 0 0" size="0.012" rgba="1 0.2 0.1 1"/>
+                    <body name="left_finger" pos="0.03 0.035 0"><joint name="gripper_left" axis="0 1 0" type="slide" range="0 0.045" damping="2"/><geom name="finger_left" type="box" size="0.045 0.012 0.012" pos="0.04 0.025 0" rgba="0.85 0.85 0.88 1"/></body>
+                    <body name="right_finger" pos="0.03 -0.035 0"><joint name="gripper_right" axis="0 1 0" type="slide" range="-0.045 0" damping="2"/><geom name="finger_right" type="box" size="0.045 0.012 0.012" pos="0.04 -0.025 0" rgba="0.85 0.85 0.88 1"/></body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="object" pos="0.43 0 0.425"><freejoint name="object_free"/><geom name="object_geom" type="box" size="0.025 0.025 0.025" mass="0.08" rgba="0.9 0.25 0.16 1"/></body>
+    <body name="obstacle" pos="0.45 0.25 0.48"><geom name="obstacle_geom" type="cylinder" size="0.045 0.10" rgba="0.8 0.2 0.2 0.7"/></body>
+    <site name="target" pos="0.55 -0.25 0.43" size="0.025" rgba="0.2 0.9 0.3 0.6"/>
+  </worldbody>
+  <actuator>
+    <motor name="motor1" joint="joint1"/><motor name="motor2" joint="joint2"/><motor name="motor3" joint="joint3"/><motor name="motor4" joint="joint4"/><motor name="motor5" joint="joint5"/><motor name="motor6" joint="joint6"/>
+    <position name="grip_left" joint="gripper_left" kp="100" ctrlrange="0 0.045"/><position name="grip_right" joint="gripper_right" kp="100" ctrlrange="-0.045 0"/>
+  </actuator>
+</mujoco>

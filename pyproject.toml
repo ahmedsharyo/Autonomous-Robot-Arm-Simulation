@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robot-arm-simulation"
+version = "0.1.0"
+description = "Autonomous robot arm simulation with independent kinematics, IK, control, and manipulation"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["mujoco>=3.2", "numpy>=1.26", "scipy>=1.11", "matplotlib>=3.8", "imageio[ffmpeg]>=2.34", "PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
