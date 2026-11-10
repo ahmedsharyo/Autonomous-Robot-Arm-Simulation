@@ -1,8 +1,8 @@
 import numpy as np
-from robot_arm.simulation import ArmSimulation
-from robot_arm.ik import solve_dls
-from robot_arm.control import torque_tracking
-from robot_arm.trajectory import interpolate
+from src.robot_arm.simulation import ArmSimulation
+from src.robot_arm.ik import solve_dls
+from src.robot_arm.control import torque_tracking
+from src.robot_arm.trajectory import interpolate
 
 def main():
     sim=ArmSimulation(); target=np.array([.48,.18,.68]); result=solve_dls(target,sim.q)

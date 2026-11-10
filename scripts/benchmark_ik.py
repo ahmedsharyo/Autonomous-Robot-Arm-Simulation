@@ -1,5 +1,5 @@
-from robot_arm.evaluation import benchmark_ik
-from robot_arm.visualization import plot_ik_benchmark
+from src.robot_arm.evaluation import benchmark_ik
+from src.robot_arm.visualization import plot_ik_benchmark
 
 def main():
     result=benchmark_ik(40,17,'results/metrics/ik_trials.csv')

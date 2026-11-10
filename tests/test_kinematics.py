@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from robot_arm.kinematics import forward_kinematics,geometric_jacobian,finite_difference_jacobian
+from src.robot_arm.kinematics import forward_kinematics,geometric_jacobian,finite_difference_jacobian
 
 def test_jacobian_matches_finite_difference():
     q=np.array([.3,-.4,.6,.2,-.5,.1])

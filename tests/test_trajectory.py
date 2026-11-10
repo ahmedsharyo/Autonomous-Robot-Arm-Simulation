@@ -1,5 +1,5 @@
 import numpy as np
-from robot_arm.trajectory import interpolate
+from src.robot_arm.trajectory import interpolate
 
 def test_quintic_trajectory_endpoint_continuity():
     a=np.array([0.,1.]);b=np.array([2.,-1.])

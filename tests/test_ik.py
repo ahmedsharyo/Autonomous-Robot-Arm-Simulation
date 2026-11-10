@@ -1,6 +1,6 @@
 import numpy as np
-from robot_arm.ik import solve_dls,solve_optimization,LOWER,UPPER
-from robot_arm.kinematics import forward_kinematics
+from src.robot_arm.ik import solve_dls,solve_optimization,LOWER,UPPER
+from src.robot_arm.kinematics import forward_kinematics
 
 def test_both_ik_solve_reachable_target():
     q=np.array([.3,-.4,.6,.2,-.5,.1]); target=forward_kinematics(q)[0]; q0=q+np.array([.08,-.05,.06,0,.03,-.04])
