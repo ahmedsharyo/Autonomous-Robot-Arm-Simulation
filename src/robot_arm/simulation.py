@@ -20,9 +20,8 @@ class ArmSimulation:
         self._ee = mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_SITE,'ee')
         self._object = mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_BODY,'object')
         self.reset()
-    def reset(self, q: np.ndarray | None = None, seed: int = 0) -> None:
+    def reset(self, q: np.ndarray | None = None) -> None:
         """Reset physics and object pose to a deterministic state."""
-        del seed
         mujoco.mj_resetData(self.model, self.data)
         if q is not None: self.data.qpos[self._qadr] = np.asarray(q,dtype=float)
         self.data.qpos[self.model.jnt_qposadr[mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_JOINT,'object_free')]:][:3] = [.43,0,.425]
