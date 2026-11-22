@@ -50,4 +50,5 @@ class PickPlaceTask:
         self.state=TaskState.DONE if placed else TaskState.FAILED; self.history.append(self.state.name)
         return self._report(obj,destination,placed)
     def _report(self,obj,dest,success):
-        return {'success':bool(success),'state':self.state.name,'states':self.history.copy(),'initial_object':obj.tolist(),'destination':np.asarray(dest).tolist(),'final_object':self.sim.object_position.tolist(),'contacts':self.sim.contacts()}
+        return {'success':bool(success),'state':self.state.name,'states':self.history.copy(),'initial_object':obj.tolist(),
+                'destination':np.asarray(dest).tolist(),'final_object':self.sim.object_position.tolist(),'contacts':self.sim.contacts()}
